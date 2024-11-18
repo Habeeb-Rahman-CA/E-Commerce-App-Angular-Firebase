@@ -13,6 +13,6 @@ export class NavbarComponent {
   router = inject(Router)
 
   goTosignIn(){
-    this.router.navigate(['/sign-in'])
+    this.router.navigate(['/register'])
   }
 }
