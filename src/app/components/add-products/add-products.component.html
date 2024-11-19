@@ -19,20 +19,23 @@
                     <input class="p-1 border rounded-lg" type="text">
                 </div>
                 <div class="flex flex-col gap-1 mb-2">
-                    <label class="text-sm text-slate-500" for="">Discount</label>
+                    <label class="text-sm text-slate-500" for="">Category</label>
                     <select class="p-1 border rounded-lg" name="discount">
-                        <option value="">Select Discount Type</option>
-                        <option class="font-sans" value="WELCOME10">WELCOME10</option>
-                        <option class="font-sans" value="MEMBER20">MEMBER20</option>
-                        <option class="font-sans" value="WINTER15">WINTER15</option>
+                        <option value="">Select Category</option>
+                        <option value="Shirts">Shirts</option>
+                        <option value="Jeans">Jeans</option>
+                        <option value="Sweaters & Hoodies">Sweaters & Hoodies</option>
+                        <option value="Polos">Polos</option>
+                        <option value="T-Shirt & Tops">T-Shirt & Tops</option>
+                        <option value="Underwear">Underwear</option>
                     </select>
                 </div>
             </div>
             <div class="w-1/4">
                 <h3 class="font-semibold pb-4">Upload Image</h3>
-                <div>
-                    <label class="text-sm text-slate-500" for=""></label>
-                    <input type="text">
+                <div class="flex flex-col gap-1 mb-2">
+                    <img class="inputImg" src="https://img.freepik.com/free-vector/images-concept-illustration_114360-218.jpg?t=st=1732006310~exp=1732009910~hmac=c8c5d6cd2a2e56726709ea7959de66ab77b588533ed771ed1e096d39586793c0&w=740" alt="">
+                    <input class="p-1 border rounded-lg" placeholder="Enter Image URL" type="text">
                 </div>
             </div>
         </form>
