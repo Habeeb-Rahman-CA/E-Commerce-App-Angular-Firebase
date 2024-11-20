@@ -12,16 +12,14 @@ export class NavbarComponent {
 
   router = inject(Router)
 
-  isRegister: boolean = true
-  btnText = signal('Sign In')
+  isRegister: boolean = false
+  btnText = signal('Get Started')
 
   toggleRegister() {
     this.isRegister = !this.isRegister
-    if (this.isRegister) {
-      this.btnText.set('Sign In')
+    if (!this.isRegister) {
       this.router.navigate(['/home'])
-    } else if (!this.isRegister) {
-      this.btnText.set('Back Home')
+    } else if (this.isRegister) {
       this.router.navigate(['/register'])
     }
   }
