@@ -34,6 +34,18 @@ export class AuthService {
   login(email: string, password: string) {
     signInWithEmailAndPassword(auth, email, password).then((res) => {
       const user = res.user
+      getDoc(doc(db, 'users', user.uid)).then(res =>{
+          const userData = res.data()
+          if (userData) {
+            if (userData['isRole']) {
+              this.router.navigate(['/admin-dashboard'])
+            } else {
+              this.router.navigate(['/products'])
+            }
+          }
+      })
+    }, err =>{
+      alert('User not found, please register')
     })
   }
 

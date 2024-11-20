@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,13 @@ import { RouterModule } from '@angular/router';
 })
 export class LoginComponent {
 
-  onLogin(){}
+  email: string = ''
+  password: string = ''
+
+  auth = inject(AuthService)
+
+  onLogin(){
+    this.auth.login(this.email, this.password)
+  }
 
 }
