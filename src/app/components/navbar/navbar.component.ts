@@ -17,10 +17,12 @@ export class NavbarComponent {
 
   toggleRegister() {
     this.isRegister = !this.isRegister
-    if (!this.isRegister) {
-      this.router.navigate(['/home'])
-    } else if (this.isRegister) {
+    if (this.isRegister) {
       this.router.navigate(['/register'])
+      this.btnText.set('Back Home')
+    } else if (!this.isRegister) {
+      this.router.navigate(['/home'])
+      this.btnText.set('Get Started')
     }
   }
 }
