@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,17 +13,21 @@ export class NavbarComponent {
 
   router = inject(Router)
 
+  auth = inject(AuthService)
+
+  btnHome = this.auth.btnHome
+
   isRegister: boolean = false
-  btnText = signal('Get Started')
 
   toggleRegister() {
     this.isRegister = !this.isRegister
     if (this.isRegister) {
       this.router.navigate(['/register'])
-      this.btnText.set('Back Home')
+      this.btnHome.set('Back Home')
     } else if (!this.isRegister) {
       this.router.navigate(['/home'])
-      this.btnText.set('Get Started')
+      this.btnHome.set('Get Started')
     }
   }
+  
 }

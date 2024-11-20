@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { addDoc, collection, doc, getDoc, query, setDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase/firebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
@@ -16,6 +16,8 @@ export class AuthService {
 
   constructor() { }
 
+  btnHome = signal('Get Started')
+
   register(name: string, email: string, password: string, isRole: boolean) {
     createUserWithEmailAndPassword(auth, email, password).then((res) => {
       const user = res.user
@@ -25,6 +27,7 @@ export class AuthService {
         isRole: isRole
       })
       this.router.navigate(['/login'])
+      this.btnHome.set('Back Home')
     }, err => {
       alert('Something went wrong')
       this.router.navigate(['/register'])
@@ -37,6 +40,7 @@ export class AuthService {
       getDoc(doc(db, 'users', user.uid)).then(res =>{
           const userData = res.data()
           if (userData) {
+            this.btnHome.set(userData['name'])
             if (userData['isRole']) {
               this.router.navigate(['/admin-dashboard'])
             } else {
