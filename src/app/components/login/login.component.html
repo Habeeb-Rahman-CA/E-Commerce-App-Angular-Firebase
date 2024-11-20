@@ -1,7 +1,7 @@
 <div class="container mx-auto my-20">
     <div class="card w-2/4 shadow-md mx-auto p-8 bg-white rounded-xl">
         <h1 class="text-center mb-4 text-xl font-semibold">Login</h1>
-        <form>
+        <form (ngSubmit)="onLogin()">
             <div class="flex flex-col mb-2">
                 <label class="text-sm text-slate-500">Email</label>
                 <input type="email" class="p-1 border rounded-lg">
