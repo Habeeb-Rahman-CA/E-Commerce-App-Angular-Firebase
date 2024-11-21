@@ -1,7 +1,7 @@
 <div class="container mx-auto">
     <div class="grid grid-cols-4 my-5">
         @for (product of productList; track $index) {
-            <div class="card border-2 border-blue-100 rounded-lg overflow-hidden bg-white m-8 cursor-pointer">
+            <div (click)="toProductDetail(product.productId)" class="card border-2 border-blue-100 rounded-lg overflow-hidden bg-white m-8 cursor-pointer">
                 <div class="card-img-top">
                     <img src="{{product.productImgUrl}}">
                 </div>
