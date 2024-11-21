@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IProducts } from '../../model/user';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-add-products',
@@ -13,6 +14,8 @@ import { IProducts } from '../../model/user';
 })
 export class AddProductsComponent {
 
+  productService = inject(ProductsService)
+
   products: IProducts = {
     productName: '',
     productDesc: '',
@@ -21,8 +24,9 @@ export class AddProductsComponent {
     productImgUrl: ''
   }
   
-  addProducts(){
-    console.log(this.products);
+  addProducts(productForm: NgForm){
+    this.productService.addProducts(this.products)
+    productForm.resetForm()
   }
 
 

@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  userRef = (collection(db, 'users'))
   router = inject(Router)
 
   constructor() { }
