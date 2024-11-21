@@ -1,6 +1,7 @@
 <div class="container mx-auto">
-    <div class="flex justify-center items-center m-8">
+    <div class="flex justify-between items-center m-8">
         <h1 class="text-xl font-semibold text-slate-500 uppercase">Add New Product</h1>
+        <button class="bg-slate-900 px-4 py-2 text-white rounded-full hover:bg-slate-800 transition-all duration-300" (click)="addProducts()">Add Products</button>
     </div>
     <div class="flex mx-auto bg-white p-8 rounded-t-3xl border-t border-blue-100 w-3/4">
         <form action="" class="flex w-full gap-4">
@@ -8,19 +9,19 @@
                 <h3 class="font-semibold pb-4">Genaral Information</h3>
                 <div class="flex flex-col gap-1 mb-2">
                     <label class="text-sm text-slate-500" for="">Product Name</label>
-                    <input class="p-1 border rounded-lg" type="text">
+                    <input [(ngModel)]="products.productName" name="productName" class="p-1 border rounded-lg" type="text">
                 </div>
                 <div class="flex flex-col gap-1 mb-2">
                     <label class="text-sm text-slate-500" for="">Product Description</label>
-                    <textarea class="p-1 border rounded-lg" type="text"></textarea>
+                    <textarea [(ngModel)]="products.productDesc" name="productDesc" class="p-1 border rounded-lg" type="text"></textarea>
                 </div>
                 <div class="flex flex-col gap-1 mb-2">
                     <label class="text-sm text-slate-500" for="">Price</label>
-                    <input class="p-1 border rounded-lg" type="text">
+                    <input [(ngModel)]="products.productPrice" name="productPrice" class="p-1 border rounded-lg" type="text">
                 </div>
                 <div class="flex flex-col gap-1 mb-2">
                     <label class="text-sm text-slate-500" for="">Category</label>
-                    <select class="p-1 border rounded-lg" name="discount">
+                    <select [(ngModel)]="products.productCategory" name="productCategory" class="p-1 border rounded-lg" name="discount">
                         <option value="">Select Category</option>
                         <option value="Shirts">Shirts</option>
                         <option value="Jeans">Jeans</option>
@@ -34,8 +35,8 @@
             <div class="w-1/4">
                 <h3 class="font-semibold pb-4">Upload Image</h3>
                 <div class="flex flex-col gap-1 mb-2">
-                    <img class="inputImg" src="https://img.freepik.com/free-vector/images-concept-illustration_114360-218.jpg?t=st=1732006310~exp=1732009910~hmac=c8c5d6cd2a2e56726709ea7959de66ab77b588533ed771ed1e096d39586793c0&w=740" alt="">
-                    <input class="p-1 border rounded-lg" placeholder="Enter Image URL" type="text">
+                    <img class="inputImg" src="{{products.productImgUrl}}" alt="">
+                    <input [(ngModel)]="products.productImgUrl" name="productImgUrl" class="p-1 border rounded-lg" placeholder="Enter Image URL" type="text">
                 </div>
             </div>
         </form>

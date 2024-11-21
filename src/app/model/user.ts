@@ -4,3 +4,11 @@ export interface IUser {
     email: string,
     isRole: boolean
 }
+
+export interface IProducts {
+    productName: string,
+    productDesc: string,
+    productPrice: number | null,
+    productCategory: string,
+    productImgUrl: string,
+}
