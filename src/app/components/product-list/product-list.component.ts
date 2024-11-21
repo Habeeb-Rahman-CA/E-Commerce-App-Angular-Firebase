@@ -1,27 +1,27 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { IProducts } from '../../model/user';
-import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-products',
+  selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
+  imports: [RouterModule, CommonModule],
+  templateUrl: './product-list.component.html',
+  styleUrl: './product-list.component.css'
 })
-export class ProductsComponent implements OnInit {
+export class ProductListComponent implements OnInit {
 
   productService = inject(ProductsService)
 
   productList: IProducts[] = []
 
   ngOnInit(): void {
-    this.getProducts()
+      this.getAllProducts()
   }
 
-  async getProducts() {
+  async getAllProducts(){
     this.productList = await this.productService.getAllProducts()
   }
 

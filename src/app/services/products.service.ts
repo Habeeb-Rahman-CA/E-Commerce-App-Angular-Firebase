@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, getDocs, setDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebaseConfig';
 import { IProducts } from '../model/user';
 
@@ -10,9 +10,7 @@ export class ProductsService {
 
   constructor() { }
 
-  productRef = (collection(db, "products"))
-
-  addProducts(products: IProducts){
+  addProducts(products: IProducts) {
     addDoc(collection(db, "products"), {
       name: products.productName,
       description: products.productDesc,
@@ -22,4 +20,19 @@ export class ProductsService {
     })
   }
 
+  async getAllProducts() {
+    const snapshot = await getDocs(collection(db, 'products'))
+    const products:IProducts[] = snapshot.docs.map(doc => {
+      const data = doc.data()
+      return{
+        productName: data['name'],
+        productDesc: data['description'],
+        productPrice: data['price'],
+        productCategory: data['categoty'],
+        productImgUrl: data['imageUrl']
+      } as IProducts
+    })
+    return products
+  }
 }
+

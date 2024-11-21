@@ -1,26 +1,27 @@
 <div class="container mx-auto">
     <div class="grid grid-cols-4 my-5">
-        <div class="card border-2 border-blue-100 rounded-lg overflow-hidden bg-white m-8 cursor-pointer">
-            <div class="card-img-top">
-                <img
-                    src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
-            </div>
-            <div class="card-body p-4">
-                <div class="flex justify-between items-center">
-                    <h3 class="font-semibold uppercase text-sm">Linen full sleeve</h3>
-                   <p class="font-sans text-xs">Rs.1200.00</p>
+        @for (product of productList; track $index) {
+            <div class="card border-2 border-blue-100 rounded-lg overflow-hidden bg-white m-8 cursor-pointer">
+                <div class="card-img-top">
+                    <img src="{{product.productImgUrl}}">
                 </div>
-                <div class="flex justify-between items-center">
-                    <p class="text-xs">Available Sizes: XS S M L XL</p>
-                    <div class="flex gap-2">
-                        <div class="bg-black w-2 h-2 border border-black"></div>
-                        <div class="bg-blue-500 w-2 h-2 border border-black"></div>
-                        <div class="bg-red-500 w-2 h-2 border border-black"></div>
-                        <div class="bg-white w-2 h-2 border border-black"></div>
+                <div class="card-body p-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-semibold uppercase text-sm">{{product.productName}}</h3>
+                       <p class="font-sans text-xs">{{product.productPrice | currency: 'INR'}}</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p class="text-xs">{{product.productCategory}}</p>
+                        <div class="flex gap-2">
+                            <div class="bg-black w-2 h-2 border border-black"></div>
+                            <div class="bg-blue-500 w-2 h-2 border border-black"></div>
+                            <div class="bg-red-500 w-2 h-2 border border-black"></div>
+                            <div class="bg-white w-2 h-2 border border-black"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
     
 

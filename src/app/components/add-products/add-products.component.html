@@ -1,56 +1,61 @@
 <div class="container mx-auto">
     <div class="flex justify-between items-center m-8">
-        <h1 class="text-xl font-semibold text-slate-500 uppercase">Add New Product</h1>
+        <h1 class="text-xl font-semibold text-slate-500 uppercase">Catalog</h1>
         <div class="flex gap-4">
             <button
-                class="bg-slate-900 px-4 py-2 text-white rounded-full hover:bg-slate-800 transition-all duration-300"
-                (click)="addProducts(productForm)">Add Products</button>
+                class="bg-slate-100 px-4 py-2 text-slate-900 border-2 border-slate-900 rounded-full hover:bg-slate-200 transition-all duration-300"
+                routerLink="/product-list">Products list</button>
             <button
                 class="bg-slate-900 px-4 py-2 text-white rounded-full hover:bg-slate-800 transition-all duration-300"
-                routerLink="/products" >Products list</button>
+                routerLink="/admin-dashboard">Back</button>
         </div>
     </div>
-    <div class="flex mx-auto bg-white p-8 rounded-t-3xl border-t border-blue-100 w-3/4">
-        <form #productForm="ngForm" action="" class="flex w-full gap-4">
-            <div class="w-3/4">
-                <h3 class="font-semibold pb-4">Genaral Information</h3>
-                <div class="flex flex-col gap-1 mb-2">
-                    <label class="text-sm text-slate-500" for="">Product Name</label>
-                    <input [(ngModel)]="products.productName" name="productName" class="p-1 border rounded-lg"
-                        type="text">
+    <div class=" bg-white p-8 rounded-t-3xl border-t border-blue-100 w-3/4 mx-auto">
+        <div class="flex">
+            <form #productForm="ngForm" action="" class="flex w-full gap-4">
+                <div class="w-3/4">
+                    <h3 class="font-semibold pb-4">Genaral Information</h3>
+                    <div class="flex flex-col gap-1 mb-2">
+                        <label class="text-sm text-slate-500" for="">Product Name</label>
+                        <input [(ngModel)]="products.productName" name="productName" class="p-1 border rounded-lg"
+                            type="text">
+                    </div>
+                    <div class="flex flex-col gap-1 mb-2">
+                        <label class="text-sm text-slate-500" for="">Product Description</label>
+                        <textarea [(ngModel)]="products.productDesc" name="productDesc" class="p-1 border rounded-lg"
+                            type="text"></textarea>
+                    </div>
+                    <div class="flex flex-col gap-1 mb-2">
+                        <label class="text-sm text-slate-500" for="">Price</label>
+                        <input [(ngModel)]="products.productPrice" name="productPrice" class="p-1 border rounded-lg"
+                            type="text">
+                    </div>
+                    <div class="flex flex-col gap-1 mb-2">
+                        <label class="text-sm text-slate-500" for="">Category</label>
+                        <select [(ngModel)]="products.productCategory" name="productCategory"
+                            class="p-1 border rounded-lg" name="discount">
+                            <option value="">Select Category</option>
+                            <option value="Shirts">Shirts</option>
+                            <option value="Jeans">Jeans</option>
+                            <option value="Sweaters & Hoodies">Sweaters & Hoodies</option>
+                            <option value="Polos">Polos</option>
+                            <option value="T-Shirt & Tops">T-Shirt & Tops</option>
+                            <option value="Underwear">Underwear</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="flex flex-col gap-1 mb-2">
-                    <label class="text-sm text-slate-500" for="">Product Description</label>
-                    <textarea [(ngModel)]="products.productDesc" name="productDesc" class="p-1 border rounded-lg"
-                        type="text"></textarea>
+                <div class="w-1/4">
+                    <h3 class="font-semibold pb-4">Upload Image</h3>
+                    <div class="flex flex-col gap-1 mb-2">
+                        <img class="inputImg" src="{{products.productImgUrl}}" alt="">
+                        <input [(ngModel)]="products.productImgUrl" name="productImgUrl" class="p-1 border rounded-lg"
+                            placeholder="Enter Image URL" type="text">
+                    </div>
                 </div>
-                <div class="flex flex-col gap-1 mb-2">
-                    <label class="text-sm text-slate-500" for="">Price</label>
-                    <input [(ngModel)]="products.productPrice" name="productPrice" class="p-1 border rounded-lg"
-                        type="text">
-                </div>
-                <div class="flex flex-col gap-1 mb-2">
-                    <label class="text-sm text-slate-500" for="">Category</label>
-                    <select [(ngModel)]="products.productCategory" name="productCategory" class="p-1 border rounded-lg"
-                        name="discount">
-                        <option value="">Select Category</option>
-                        <option value="Shirts">Shirts</option>
-                        <option value="Jeans">Jeans</option>
-                        <option value="Sweaters & Hoodies">Sweaters & Hoodies</option>
-                        <option value="Polos">Polos</option>
-                        <option value="T-Shirt & Tops">T-Shirt & Tops</option>
-                        <option value="Underwear">Underwear</option>
-                    </select>
-                </div>
-            </div>
-            <div class="w-1/4">
-                <h3 class="font-semibold pb-4">Upload Image</h3>
-                <div class="flex flex-col gap-1 mb-2">
-                    <img class="inputImg" src="{{products.productImgUrl}}" alt="">
-                    <input [(ngModel)]="products.productImgUrl" name="productImgUrl" class="p-1 border rounded-lg"
-                        placeholder="Enter Image URL" type="text">
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        <button
+                class="bg-slate-900 p-2 w-full mt-4 text-white rounded-full hover:bg-slate-800 transition-all duration-300"
+                (click)="addProducts(productForm)">Add Product</button>
     </div>
 </div>
