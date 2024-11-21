@@ -28,7 +28,6 @@ export class ProductsComponent implements OnInit {
   }
 
   toProductDetail(id: string){
-    console.log(id);
     this.router.navigate(['/product-detail', id])
   }
 

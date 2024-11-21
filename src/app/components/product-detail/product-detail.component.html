@@ -8,11 +8,25 @@
         </div>
     </div>
     <div class="flex mx-auto bg-white p-4 rounded-t-3xl border-t border-blue-100 w-3/4">
-        <div class="flex">
-            <div class="w-2/4">
-                <img src="" alt="" class="w-full h-full">
+        @if (product) {
+            <div class="flex gap-12">
+                <div class="w-2/4">
+                    <img [src]="product.imageUrl" alt="" class="prdctImg rounded-3xl">
+                </div>
+                <div class="w-2/4 flex flex-col justify-center">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-semibold text-slate-900 uppercase">{{product.name}}</h3>
+                        <i class="fa-solid fa-heart pe-4 text-2xl hover:text-red-600 cursor-pointer transition-all duration-300 "></i>
+                    </div>
+                    <p class="text-sm text-slate-400 pb-8">{{product.categoty}}</p>
+                    <p class="text-sm uppercase font-semibold text-slate-900">Description</p>
+                    <p class="text-sm pe-4 text-justify">{{product.description}}</p>
+                    <h1 class="text-2xl font-sans pt-8 font-semibold">{{product.price | currency: "INR"}}</h1>
+                    <p class="text-xs text-slate-500">MRP inclusive of all taxes</p>
+                    <button class="bg-slate-900 mt-8 uppercase text-white rounded-3xl p-2">Add to bag</button>
+                </div>
             </div>
-            <div class="w-2/4"></div>
-        </div>
+        }
+        
     </div>
 </div>

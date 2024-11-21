@@ -43,7 +43,7 @@ export class ProductsService {
     deleteDoc(productDoc.ref)
   }
 
-  async getProductById(id: string): Promise<IProducts | null> {
+  async getProductById(id: string): Promise<IProducts> {
     const snapshot = await getDocs(query(collection(db, 'products'), where("id", "==", id)))
     const productDoc = snapshot.docs[0]
     return productDoc.data() as IProducts

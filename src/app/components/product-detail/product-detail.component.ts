@@ -3,6 +3,7 @@ import { IProducts } from '../../model/user';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductDetailComponent implements OnInit {
 
-  product: IProducts | null = null
+  product: any
 
   activateRoute = inject(ActivatedRoute)
   productService = inject(ProductsService)

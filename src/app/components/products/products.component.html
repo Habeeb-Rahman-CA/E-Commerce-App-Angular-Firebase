@@ -3,7 +3,7 @@
         @for (product of productList; track $index) {
             <div (click)="toProductDetail(product.productId)" class="card border-2 border-blue-100 rounded-lg overflow-hidden bg-white m-8 cursor-pointer">
                 <div class="card-img-top">
-                    <img src="{{product.productImgUrl}}">
+                    <img [src]="product.productImgUrl">
                 </div>
                 <div class="card-body p-4">
                     <div class="flex justify-between items-center">
