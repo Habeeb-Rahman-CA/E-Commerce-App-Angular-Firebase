@@ -6,6 +6,7 @@ export interface IUser {
 }
 
 export interface IProducts {
+    productId: string
     productName: string,
     productDesc: string,
     productPrice: number | null,

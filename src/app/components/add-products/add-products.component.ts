@@ -17,6 +17,7 @@ export class AddProductsComponent {
   productService = inject(ProductsService)
 
   products: IProducts = {
+    productId: new Date().toString(),
     productName: '',
     productDesc: '',
     productPrice: null,

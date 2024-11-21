@@ -25,4 +25,9 @@ export class ProductListComponent implements OnInit {
     this.productList = await this.productService.getAllProducts()
   }
 
+  deleteProduct(id: string){
+    this.productService.deleteProducts(id)
+    this.getAllProducts()
+  }
+
 }
