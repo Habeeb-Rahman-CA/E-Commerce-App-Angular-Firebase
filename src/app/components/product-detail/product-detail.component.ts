@@ -3,6 +3,8 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { ICart, IProducts } from '../../model/user';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -18,6 +20,7 @@ export class ProductDetailComponent implements OnInit {
   auth = inject(AuthService)
   activateRoute = inject(ActivatedRoute)
   productService = inject(ProductsService)
+  cartService = inject(CartService)
   router = inject(Router)
 
   isLogin = this.auth.isLogin
@@ -43,9 +46,14 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
-  addToCart(){
+  addToCart(cartItems: any){
     if (this.isLogin()) {
-      alert('added to cart')
+      const currentUser = this.cartService.getCurrentUser()
+      if (currentUser) {
+        const userId = currentUser.uid
+        this.cartService.addToCart(userId, cartItems)
+        alert("cart added")
+      }
     } else {
       alert('your not logged in yet')
     }

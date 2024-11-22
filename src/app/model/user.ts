@@ -13,3 +13,10 @@ export interface IProducts {
     productCategory: string,
     productImgUrl: string,
 }
+
+export interface ICart{
+    id: string,
+    name:string,
+    price: number|null,
+    quantity: number
+}
