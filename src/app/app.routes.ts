@@ -8,6 +8,7 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { MyCartComponent } from './components/my-cart/my-cart.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -19,6 +20,7 @@ export const routes: Routes = [
     { path: 'admin-dashboard', component: AdminDashboardComponent },
     { path: 'user-dashboard', component: UserDashboardComponent },
     { path: 'product-list', component: ProductListComponent },
-    { path: 'product-detail/:id', component: ProductDetailComponent }
+    { path: 'product-detail/:id', component: ProductDetailComponent },
+    { path: 'my-cart', component: MyCartComponent }
 
 ];
