@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { auth, db } from '../firebase/firebaseConfig';
-import { ICart, IProducts } from '../model/user';
+import { ICart } from '../model/user';
 import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 
 @Injectable({
@@ -41,8 +41,8 @@ export class CartService {
     })
   }
 
-  removeFromCart(userId: string, itemId: string){
+  async removeFromCart(userId: string, itemId: string){
     const itemRef = doc(db, 'users', userId, 'cart', itemId)
-    deleteDoc(itemRef)
+    await deleteDoc(itemRef)
   }
 }
