@@ -9,6 +9,7 @@ import { UserDashboardComponent } from './components/user-dashboard/user-dashboa
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { MyCartComponent } from './components/my-cart/my-cart.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -21,6 +22,7 @@ export const routes: Routes = [
     { path: 'user-dashboard', component: UserDashboardComponent },
     { path: 'product-list', component: ProductListComponent },
     { path: 'product-detail/:id', component: ProductDetailComponent },
-    { path: 'my-cart', component: MyCartComponent }
+    { path: 'my-cart', component: MyCartComponent },
+    {path: 'payment', component: PaymentComponent}
 
 ];

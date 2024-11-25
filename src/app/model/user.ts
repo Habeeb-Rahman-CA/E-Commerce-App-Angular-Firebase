@@ -21,3 +21,10 @@ export interface ICart{
     imageUrl: string,
     categoty: string
 }
+
+export interface IAddress{
+    street: string,
+    landmark: string,
+    city: string,
+    pincode: string
+  }

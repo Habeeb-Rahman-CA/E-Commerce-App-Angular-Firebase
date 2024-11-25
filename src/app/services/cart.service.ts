@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { auth, db } from '../firebase/firebaseConfig';
-import { ICart } from '../model/user';
+import { IAddress, ICart } from '../model/user';
 import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore';
 
 @Injectable({
@@ -41,14 +41,33 @@ export class CartService {
     })
   }
 
-  // async removeFromCart(userId: string, itemId: string) {
-  //   const itemRef = doc(db, 'users', userId, 'cart', itemId)
-  //   await deleteDoc(itemRef)
-  // }
-
   async removeFromCart(userId: string, itemId: string) {
     const snapshot = await getDocs(query(collection(db, 'users', userId, 'cart'), where('id', '==', itemId)))
     const data = snapshot.docs[0]
     deleteDoc(data.ref)
+  }
+
+  async checkout(userId: string, address: IAddress) {
+    const cartItem = await this.getCart(userId)
+
+    const orderDetails = {
+      userId,
+      address,
+      items: cartItem,
+      totalAmount: cartItem.reduce((total, item) => total + Number(item.price), 0)
+    }
+
+    const ordersRef = collection(db, 'orders')
+    addDoc(ordersRef, orderDetails)
+
+    alert('Your delivery address has been successfully added!')
+
+    const cartRef = collection(db, 'users', userId, 'cart')
+    const cartSnapshot = await getDocs(cartRef)
+
+    for(const doc of cartSnapshot.docs){
+      deleteDoc(doc.ref)
+    }
+
   }
 }

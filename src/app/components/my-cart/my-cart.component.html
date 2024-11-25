@@ -12,20 +12,20 @@
             <h1 class="font-semibold uppercase mb-4 text-slate-800">Delivery Details</h1>
             <form class="">
                 <div class="flex flex-col mb-2">
-                    <label class="text-sm text-slate-500">Address</label>
-                    <input name="address" type="text" class="p-1 border rounded-lg">
+                    <label class="text-sm text-slate-500">Street</label>
+                    <input [(ngModel)]="address.street" name="street" type="text" class="p-1 border rounded-lg">
                 </div>
                 <div class="flex flex-col mb-2">
                     <label class="text-sm text-slate-500">Landmark</label>
-                    <input name="landmark" type="text" class="p-1 border rounded-lg">
+                    <input [(ngModel)]="address.landmark" name="landmark" type="text" class="p-1 border rounded-lg">
                 </div>
                 <div class="flex flex-col mb-2">
                     <label class="text-sm text-slate-500">City</label>
-                    <input name="city" type="text" class="p-1 border rounded-lg">
+                    <input [(ngModel)]="address.city" name="city" type="text" class="p-1 border rounded-lg">
                 </div>
                 <div class="flex flex-col mb-2">
                     <label class="text-sm text-slate-500">Pincode</label>
-                    <input name="pincode" type="text" class="p-1 border rounded-lg">
+                    <input [(ngModel)]="address.pincode" name="pincode" type="text" class="p-1 border rounded-lg">
                 </div>
             </form>
         </div>
@@ -56,7 +56,7 @@
                     <p>Total</p>
                     <p class="font-sans">{{totalPrice | currency: 'INR'}}</p>
                 </div>
-                <button
+                <button (click)="checkoutCart()"
                     class="bg-slate-900 p-2 text-white rounded-lg hover:bg-slate-800 transition-all duration-300">Checkout</button>
             </div>
         </div>
