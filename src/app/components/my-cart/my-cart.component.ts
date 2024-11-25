@@ -31,13 +31,18 @@ export class MyCartComponent implements OnInit {
     }
   }
 
-  deleteItemFromCart(itemId: string){
+  deleteItemFromCart(itemId: string) {
     const currentUser = this.cartService.getCurrentUser()
     if (currentUser) {
       const userId = currentUser.uid
-      this.cartService.removeFromCart(userId, itemId)
-      console.log("Removed item from your cart");
-      this.getAllCartItems()
+      const confirmDelete = window.confirm("Are you really want to remove this item from your cart?")
+      if (confirmDelete) {
+        this.cartService.removeFromCart(userId, itemId)
+        alert("Removed item from your cart");
+        this.getAllCartItems()
+      } else {
+        alert('cancelled removing the item')
+      }
     }
   }
 }

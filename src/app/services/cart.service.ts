@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { auth, db } from '../firebase/firebaseConfig';
 import { ICart } from '../model/user';
-import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -26,23 +26,29 @@ export class CartService {
     })
   }
 
-  async getCart(userId: string){
+  async getCart(userId: string) {
     const cartRef = collection(db, 'users', userId, 'cart')
     const snapshot = await getDocs(cartRef)
-    return snapshot.docs.map(doc =>{
+    return snapshot.docs.map(doc => {
       const data = doc.data()
-      return{
-        id:data['id'],
-        name:data['name'],
-        price:data['price'],
-        imageUrl:data['imgUrl'],
-        categoty:data['category']
+      return {
+        id: data['id'],
+        name: data['name'],
+        price: data['price'],
+        imageUrl: data['imgUrl'],
+        categoty: data['category']
       } as ICart
     })
   }
 
-  async removeFromCart(userId: string, itemId: string){
-    const itemRef = doc(db, 'users', userId, 'cart', itemId)
-    await deleteDoc(itemRef)
+  // async removeFromCart(userId: string, itemId: string) {
+  //   const itemRef = doc(db, 'users', userId, 'cart', itemId)
+  //   await deleteDoc(itemRef)
+  // }
+
+  async removeFromCart(userId: string, itemId: string) {
+    const snapshot = await getDocs(query(collection(db, 'users', userId, 'cart'), where('id', '==', itemId)))
+    const data = snapshot.docs[0]
+    deleteDoc(data.ref)
   }
 }
