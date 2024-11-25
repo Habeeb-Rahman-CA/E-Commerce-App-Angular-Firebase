@@ -1,1 +1,52 @@
-<p>payment works!</p>
+<div class="container mx-auto">
+    <div class="flex justify-between items-center m-8">
+        <h1 class="text-xl font-semibold text-slate-500 uppercase">Select Payment Method</h1>
+        <div class="flex gap-8 items-center text-sm">
+            <button
+                class="bg-slate-900 px-4 py-2 text-white rounded-full hover:bg-slate-800 transition-all duration-300"
+                routerLink="/products">Back</button>
+        </div>
+    </div>
+    <div class="flex mx-auto gap-12 bg-white p-8 rounded-t-3xl border-t border-blue-100 w-3/4">
+        <div class="flex-1">
+            <label class=" mb-4 flex items-center justify-between w-full has-[:checked]:bg-slate-100 has-[:checked]:text-slate-900 has-[:checked]:ring-slate-200 p-5 border-2 rounded-lg">
+                <div class="flex items-center gap-4">
+                    <i class="fa-brands fa-cc-visa text-xl"></i>
+                    <p class="font-semibold">Credit or Debit Card</p>   
+                </div>
+                <input type="radio" name="payment" class="checked:border-slate-500 ..." />
+            </label>
+            <label class=" mb-4 flex items-center justify-between w-full has-[:checked]:bg-slate-100 has-[:checked]:text-slate-900 has-[:checked]:ring-slate-200 p-5 border-2 rounded-lg">
+                <div class="flex items-center gap-4">
+                    <i class="fa-solid fa-building-columns text-xl"></i>
+                    <p class="font-semibold">Net Banking</p>   
+                </div>
+                <input type="radio" name="payment" class="checked:border-slate-500 ..." />
+            </label>
+            <label class=" mb-4 flex items-center justify-between w-full has-[:checked]:bg-slate-100 has-[:checked]:text-slate-900 has-[:checked]:ring-slate-200 p-5 border-2 rounded-lg">
+                <div class="flex items-center gap-4">
+                    <i class="fa-solid fa-mobile-screen text-xl"></i>
+                    <p class="font-semibold">UPI</p>   
+                </div>
+                <input type="radio" name="payment" class="checked:border-slate-500 ..." />
+            </label>
+        </div>
+        <div class="flex-1">
+            <label class=" mb-4 flex items-center justify-between w-full has-[:checked]:bg-slate-100 has-[:checked]:text-slate-900 has-[:checked]:ring-slate-200 p-5 border-2 rounded-lg">
+                <div class="flex items-center gap-4">
+                    <i class="fa-brands fa-paypal text-xl"></i>
+                    <p class="font-semibold">Paypal</p>   
+                </div>
+                <input type="radio" name="payment" class="checked:border-slate-500 ..." />
+            </label>
+            <label class=" mb-4 flex items-center justify-between w-full has-[:checked]:bg-slate-100 has-[:checked]:text-slate-900 has-[:checked]:ring-slate-200 p-5 border-2 rounded-lg">
+                <div class="flex items-center gap-4">
+                    <i class="fa-solid fa-hand-holding-dollar text-xl"></i>
+                    <p class="font-semibold">Cash On Delivery</p>   
+                </div>
+                <input type="radio" name="payment" class="checked:border-slate-500 ..." />
+            </label>
+            <button class="w-full p-5 border-2 border-slate-900 bg-slate-900 text-white hover:bg-slate-800 transition-all duration-300 rounded-lg">Proceed</button>
+        </div>
+    </div>
+</div>
