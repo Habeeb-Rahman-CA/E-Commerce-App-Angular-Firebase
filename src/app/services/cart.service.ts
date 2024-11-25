@@ -15,7 +15,7 @@ export class CartService {
     return currentUser;
   }
 
-  addToCart(userId: string, product: any) {
+  addToCart(userId: string, product: ICart) {
     const cartRef = collection(db, 'users', userId, 'cart')
     addDoc(cartRef, {
       id: product.id,
@@ -29,8 +29,16 @@ export class CartService {
   async getCart(userId: string){
     const cartRef = collection(db, 'users', userId, 'cart')
     const snapshot = await getDocs(cartRef)
-    const cartItem = snapshot.docs.map(doc => doc.data())
-    return cartItem
+    return snapshot.docs.map(doc =>{
+      const data = doc.data()
+      return{
+        id:data['id'],
+        name:data['name'],
+        price:data['price'],
+        imageUrl:data['imgUrl'],
+        categoty:data['category']
+      } as ICart
+    })
   }
 
   removeFromCart(userId: string, itemId: string){
