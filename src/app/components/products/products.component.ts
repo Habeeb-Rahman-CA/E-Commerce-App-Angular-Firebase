@@ -4,11 +4,12 @@ import { IProducts } from '../../model/user';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { GalleriaPrimeComponent } from "../galleria-prime/galleria-prime.component";
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, GalleriaPrimeComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
