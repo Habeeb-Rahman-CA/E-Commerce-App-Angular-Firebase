@@ -1,16 +1,18 @@
-<div class="container mx-auto my-20">
-    <div class="card w-2/4 shadow-md mx-auto p-8 bg-white rounded-xl">
-        <h1 class="text-center mb-4 text-xl font-semibold">Register</h1>
+<div class="container mx-auto">
+    <div class="flex justify-center items-center mt-12 mb-8">
+        <h1 class="text-xl font-semibold text-slate-500 uppercase">Register</h1>
+    </div>
+    <div class="mx-auto gap-12 bg-white p-8 rounded-t-3xl border-t border-blue-100 w-2/4">
         <form (ngSubmit)="onRegister()">
-            <div class="flex flex-col mb-2">
+            <div class="flex flex-col mb-4">
                 <label class="text-sm text-slate-500">User Name</label>
                 <input required [(ngModel)]="name" name="name" type="text" class="p-1 border rounded-lg">
             </div>
-            <div class="flex flex-col mb-2">
+            <div class="flex flex-col mb-4">
                 <label class="text-sm text-slate-500">Email</label>
                 <input required="" [(ngModel)]="email" name="email" type="email" class="p-1 border rounded-lg">
             </div>
-            <div class="flex flex-col mb-2">
+            <div class="flex flex-col mb-4">
                 <label class="text-sm text-slate-500">Password</label>
                 <input required="" [(ngModel)]="password" name="email" type="password" class="p-1 border rounded-lg">
             </div>
