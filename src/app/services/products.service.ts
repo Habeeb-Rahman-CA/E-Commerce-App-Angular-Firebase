@@ -23,7 +23,7 @@ export class ProductsService {
 
   async getAllProducts() {
     const snapshot = await getDocs(collection(db, 'products'))
-    const products: IProducts[] = snapshot.docs.map(doc => {
+    const products = snapshot.docs.map(doc => {
       const data = doc.data()
       return {
         productId: data['id'],

@@ -24,11 +24,11 @@
                         <p>{{item.name}}</p>
                         }
                     </td>
-                    <td class="p-2">{{order.address.street}}, {{order.address.landmark}}, {{order.address.city}},
+                    <td class="p-2 text-start">{{order.address.street}}, {{order.address.landmark}}, {{order.address.city}},
                         {{order.address.pincode}}</td>
-                    <td class="p-2 font-semibold">{{order.totalAmount | currency: 'INR'}}</td>
+                    <td class="p-2 font-semibold text-end">{{order.totalAmount | currency: 'INR'}}</td>
                     <td class=" p-2 ">
-                        <div class="bg-green-100 p-1 text-green-700 uppercase text-xs rounded-lg">In-Transit</div>
+                        <div class="bg-green-100 p-1 text-green-700 uppercase text-xs rounded-lg ">In-Transit</div>
                     </td>
                 </tr>
                 }

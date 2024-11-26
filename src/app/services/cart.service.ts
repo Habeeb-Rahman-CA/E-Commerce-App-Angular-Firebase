@@ -85,4 +85,19 @@ export class CartService {
     })
   }
 
+  async getAllOrders() {
+    const orderRef = collection(db, 'orders')
+    const snapshot = await getDocs(orderRef)
+    return snapshot.docs.map(doc => {
+      const data = doc.data()
+      return {
+        id: doc.id,
+        userId: data['userId'],
+        address: data['address'],
+        items: data['items'],
+        totalAmount: data['totalAmount']
+      } as IOrder
+    })
+  }
+
 }

@@ -1,8 +1,9 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { addDoc, collection, doc, getDoc, query, setDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, getDoc, getDocs, query, setDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase/firebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { Router } from '@angular/router';
+import { IUser } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -65,4 +66,17 @@ export class AuthService {
     })
   }
 
+  async getAllUsers(){
+    const userRef = collection(db, 'users')
+    const snapshot = await getDocs(userRef)
+    return snapshot.docs.map(doc =>{
+      const data = doc.data()
+      return {
+        uid: doc.id,
+        name: data['name'],
+        email:data['email'],
+        isRole:data['isRole']
+      } as IUser
+    })
+  }
 }
