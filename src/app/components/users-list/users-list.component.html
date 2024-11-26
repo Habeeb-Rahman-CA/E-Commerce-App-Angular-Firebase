@@ -17,12 +17,12 @@
             </thead>
             <tbody class="bg-slate-50 text-center text-slate-700 font-sans">
                 @for (user of users; track $index) {
-                <tr>
+                <tr class="hover:bg-slate-100">
                     <td class="text-center p-2">{{user.uid}}</td>
                     <td class="text-start p-2">{{user.name}}</td>
                     <td class="text-start p-2">{{user.email}}</td>
                     <td class="text-center p-2">
-                        <button>Report</button>
+                        <button class="py-1 px-4 rounded-lg text-red-500 hover:bg-red-200 transition-all duration-300 bg-red-100">Report</button>
                     </td>
                 </tr>
                 }
