@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -10,5 +11,10 @@ import { RouterModule } from '@angular/router';
   styleUrl: './user-dashboard.component.css'
 })
 export class UserDashboardComponent {
+
+ auth = inject(AuthService)
+
+ userName = this.auth.btnHome
+ userEmail = this.auth.userEmail
 
 }

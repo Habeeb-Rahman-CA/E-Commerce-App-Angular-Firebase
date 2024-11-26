@@ -48,4 +48,5 @@ export class ProductsService {
     const productDoc = snapshot.docs[0]
     return productDoc.data() as IProducts
   }
+
 }

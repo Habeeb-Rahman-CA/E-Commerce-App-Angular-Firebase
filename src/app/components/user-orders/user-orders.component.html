@@ -1,0 +1,38 @@
+<div class="container mx-auto">
+    <div class="flex justify-between items-center m-8">
+        <h1 class="text-xl  font-semibold text-slate-500 uppercase">Track Your Order</h1>
+        <button
+                class="bg-slate-900 px-4 py-2 text-white rounded-full hover:bg-slate-800 transition-all duration-300"
+                routerLink="/user-dashboard">Back</button>
+    </div>
+    <div class="flex mx-auto gap-12 bg-white p-8 rounded-t-3xl border-t border-blue-100 w-3/4">
+        <table class="table-auto w-full rounded-t-3xl overflow-hidden border-separate">
+            <caption class="caption-bottom text-xs text-slate-500 my-2">List of all uncompleted orders</caption>
+            <thead class="bg-slate-200 text-slate-900">
+                <tr>
+                    <th class="p-2">Items</th>
+                    <th class="p-2">Address</th>
+                    <th class="p-2">Price</th>
+                    <th class="p-2">Status</th>
+                </tr>
+            </thead>
+            <tbody class="bg-slate-50 text-center text-slate-700 font-sans">
+                @for (order of orders; track $index) {
+                <tr>
+                    <td class="p-2 text-start">
+                        @for (item of order.items; track $index) {
+                        <p>{{item.name}}</p>
+                        }
+                    </td>
+                    <td class="p-2">{{order.address.street}}, {{order.address.landmark}}, {{order.address.city}},
+                        {{order.address.pincode}}</td>
+                    <td class="p-2 font-semibold">{{order.totalAmount | currency: 'INR'}}</td>
+                    <td class=" p-2 ">
+                        <div class="bg-green-100 p-1 text-green-700 uppercase text-xs rounded-lg">In-Transit</div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

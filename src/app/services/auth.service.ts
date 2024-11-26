@@ -16,6 +16,7 @@ export class AuthService {
   isLogin = signal<boolean>(false)
 
   btnHome = signal<string>('Get Started')
+  userEmail = signal<string>('')
 
   register(name: string, email: string, password: string, isRole: boolean) {
     createUserWithEmailAndPassword(auth, email, password).then((res) => {
@@ -41,6 +42,7 @@ export class AuthService {
         const userData = res.data()
         if (userData) {
           this.btnHome.set(userData['name'])
+          this.userEmail.set(userData['email'])
           if (userData['isRole']) {
             this.router.navigate(['/admin-dashboard'])
           } else {

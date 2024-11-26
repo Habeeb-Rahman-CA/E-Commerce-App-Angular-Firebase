@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { auth, db } from '../firebase/firebaseConfig';
-import { IAddress, ICart } from '../model/user';
+import { IAddress, ICart, IOrder } from '../model/user';
 import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore';
 
 @Injectable({
@@ -65,9 +65,24 @@ export class CartService {
     const cartRef = collection(db, 'users', userId, 'cart')
     const cartSnapshot = await getDocs(cartRef)
 
-    for(const doc of cartSnapshot.docs){
+    for (const doc of cartSnapshot.docs) {
       deleteDoc(doc.ref)
     }
-
   }
+
+  async getOrdersById(userId: string) {
+    const orderRef = collection(db, 'orders')
+    const snapshot = await getDocs(query(orderRef, where('userId', '==', userId)))
+    return snapshot.docs.map((doc) => {
+      const data = doc.data()
+      return {
+        id: doc.id,
+        userId: data['userId'],
+        address: data['address'],
+        items: data['items'],
+        totalAmount: data['totalAmount']
+      } as IOrder
+    })
+  }
+
 }

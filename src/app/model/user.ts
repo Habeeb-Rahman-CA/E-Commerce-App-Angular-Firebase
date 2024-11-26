@@ -14,17 +14,24 @@ export interface IProducts {
     productImgUrl: string,
 }
 
-export interface ICart{
+export interface ICart {
     id: string,
-    name:string,
+    name: string,
     price: number,
     imageUrl: string,
     categoty: string
 }
 
-export interface IAddress{
+export interface IAddress {
     street: string,
     landmark: string,
     city: string,
     pincode: string
-  }
+}
+
+export interface IOrder {
+    userId: string
+    address: IAddress
+    items: ICart[],
+    totalAmount: number
+}
