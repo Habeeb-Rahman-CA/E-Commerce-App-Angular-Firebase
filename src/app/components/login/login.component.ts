@@ -8,7 +8,7 @@ import { LoaderComponent } from "../loader/loader.component";
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule, FormsModule, CommonModule, LoaderComponent],
+  imports: [RouterModule, FormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
