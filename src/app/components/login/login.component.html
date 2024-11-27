@@ -12,8 +12,16 @@
                 <label class="text-sm text-slate-500">Password</label>
                 <input [(ngModel)]="password" name="password" type="password" class="p-1 border rounded-lg">
             </div>
-            <button class="w-full bg-slate-900 rounded-full text-white p-1 my-2 hover:bg-slate-800 transition-all duration-300">Login</button>
+            <button class="w-full bg-slate-900 rounded-full text-white p-1 my-2 hover:bg-slate-800 transition-all duration-300">
+               <ng-container *ngIf="!isLoading; else spinner">Login</ng-container>
+            </button>
         </form>
         <p class="text-sm text-slate-500">You don't have an account? <span routerLink="/register" class="text-slate-900 cursor-pointer font-semibold hover:text-blue-500 transition-all duration-300">Register</span></p>
     </div>
 </div>
+
+<ng-template #spinner>
+    <div class="spinner-border" role="status">
+        <span class="hidden">Loading...</span>
+    </div>
+</ng-template>

@@ -15,7 +15,7 @@ export class AuthService {
   constructor() { }
 
   isLogin = signal<boolean>(false)
-
+  isLoading: boolean = false
   btnHome = signal<string>('Get Started')
   userEmail = signal<string>('')
 
@@ -27,10 +27,12 @@ export class AuthService {
         email: email,
         isRole: isRole
       })
+      this.isLoading = false
       this.router.navigate(['/login'])
       this.btnHome.set('Back Home')
     }, err => {
       alert('Something went wrong')
+      this.isLoading = false
       this.router.navigate(['/register'])
     })
   }
@@ -45,8 +47,10 @@ export class AuthService {
           this.btnHome.set(userData['name'])
           this.userEmail.set(userData['email'])
           if (userData['isRole']) {
+            this.isLoading = false
             this.router.navigate(['/admin-dashboard'])
           } else {
+            this.isLoading = false
             this.router.navigate(['/products'])
           }
         }

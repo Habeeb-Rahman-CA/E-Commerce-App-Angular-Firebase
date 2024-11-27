@@ -10,3 +10,19 @@ body{
     color: #11181c;
     font-family: 'Raleway', Helvetica, sans-serif;
 }
+
+.spinner-border {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 0.2em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.75s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
