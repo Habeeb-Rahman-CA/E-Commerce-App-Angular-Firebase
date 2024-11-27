@@ -4,11 +4,12 @@ import { IAddress, ICart } from '../../model/user';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { LoaderComponent } from "../loader/loader.component";
 
 @Component({
   selector: 'app-my-cart',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, LoaderComponent],
   templateUrl: './my-cart.component.html',
   styleUrl: './my-cart.component.css'
 })
@@ -25,6 +26,7 @@ export class MyCartComponent implements OnInit {
     pincode: ''
   }
 
+  isLoading = this.cartService.isLoading
 
   ngOnInit(): void {
     this.getAllCartItems()
@@ -32,11 +34,13 @@ export class MyCartComponent implements OnInit {
 
   async getAllCartItems() {
     const currentUser = this.cartService.getCurrentUser()
+    this.isLoading = true
     if (currentUser) {
       const userId = currentUser.uid
       this.cartList = await this.cartService.getCart(userId)
       this.totalPrice = this.cartList.reduce((total, item) => total + Number(item.price), 0)
     }
+    this.isLoading = false
   }
 
   deleteItemFromCart(itemId: string) {

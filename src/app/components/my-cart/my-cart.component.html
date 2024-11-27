@@ -45,12 +45,18 @@
                             </td>
                             <td class="text-end font-semibold font-sans">{{item.price | currency: 'INR'}}</td>
                             <td class="text-end">
-                                <a (click)="deleteItemFromCart(item.id)"><i class="fa-solid fa-square-minus text-xl text-slate-900 hover:text-red-500 transition-all duration-300 cursor-pointer"></i></a>
+                                <a (click)="deleteItemFromCart(item.id)"><i
+                                        class="fa-solid fa-square-minus text-xl text-slate-900 hover:text-red-500 transition-all duration-300 cursor-pointer"></i></a>
                             </td>
                         </tr>
                         }
                     </tbody>
                 </table>
+                @if (isLoading) {
+                <div class="flex justify-center h-40 items-center">
+                    <app-loader></app-loader>
+                </div>
+                }
                 <hr />
                 <div class="flex justify-between p-4 font-semibold">
                     <p>Total</p>

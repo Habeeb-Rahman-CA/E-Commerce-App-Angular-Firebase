@@ -10,6 +10,8 @@ export class CartService {
 
   constructor() { }
 
+  isLoading: boolean = false
+
   getCurrentUser() {
     const currentUser = auth.currentUser
     return currentUser;

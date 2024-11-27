@@ -3,17 +3,19 @@ import { RouterModule } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { IProducts } from '../../model/user';
 import { CommonModule } from '@angular/common';
+import { LoaderComponent } from "../loader/loader.component";
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, LoaderComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent implements OnInit {
 
   productService = inject(ProductsService)
+  isLoading = this.productService.isLoading
 
   productList: IProducts[] = []
 
@@ -22,7 +24,9 @@ export class ProductListComponent implements OnInit {
   }
 
   async getAllProducts(){
+    this.isLoading = true
     this.productList = await this.productService.getAllProducts()
+    this.isLoading = false
   }
 
   deleteProduct(id: string){

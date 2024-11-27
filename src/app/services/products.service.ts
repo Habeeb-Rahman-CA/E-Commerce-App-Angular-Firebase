@@ -10,6 +10,8 @@ export class ProductsService {
 
   constructor() { }
 
+  isLoading: boolean = false
+
   addProducts(products: IProducts) {
     addDoc(collection(db, "products"), {
       id: products.productId,

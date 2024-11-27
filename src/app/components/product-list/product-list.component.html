@@ -7,11 +7,12 @@
                 routerLink="/add-products">Back</button>
         </div>
     </div>
-    <div class="flex mx-auto bg-white p-4 rounded-t-3xl border-t border-blue-100 w-3/4">
+    <div class="flex mx-auto flex-col bg-white p-4 rounded-t-3xl border-t border-blue-100 w-3/4">
         <table class="table-fixed w-full rounded-t-3xl overflow-hidden border-separate">
-            <caption class="caption-bottom text-xs text-slate-500 my-2">List of all products currently available on store.</caption>
+            <caption class="caption-bottom text-xs text-slate-500 my-2">List of all products currently available on
+                store.</caption>
             <thead class="bg-slate-200 text-slate-900">
-                <tr >
+                <tr>
                     <th class="p-2">Name</th>
                     <th class="p-2">Category</th>
                     <th class="p-2">Price</th>
@@ -19,17 +20,24 @@
                 </tr>
             </thead>
             <tbody class="bg-slate-50 text-center text-slate-700">
+
                 @for (product of productList; track $index) {
-                    <tr>
-                        <td class="text-start p-2">{{product.productName}}</td>
-                        <td class="text-start p-2">{{product.productCategory}}</td>
-                        <td class="p-2 font-sans">{{product.productPrice | currency: 'INR'}}</td>
-                        <td class="py-2 text-center">
-                            <button (click)="deleteProduct(product.productId)" class="bg-slate-900 px-12 text-sm py-1 rounded-full text-white hover:bg-red-700 transition-all duration-300">Delete</button>
-                        </td>
-                    </tr>
+                <tr>
+                    <td class="text-start p-2">{{product.productName}}</td>
+                    <td class="text-start p-2">{{product.productCategory}}</td>
+                    <td class="p-2 font-sans">{{product.productPrice | currency: 'INR'}}</td>
+                    <td class="py-2 text-center">
+                        <button (click)="deleteProduct(product.productId)"
+                            class="bg-slate-900 px-12 text-sm py-1 rounded-full text-white hover:bg-red-700 transition-all duration-300">Delete</button>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
+        @if (isLoading) {
+        <div class="flex justify-center h-80 items-center">
+            <app-loader></app-loader>
+        </div>
+        }
     </div>
 </div>

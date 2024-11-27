@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { ICart, IProducts } from '../../model/user';
 import { CartService } from '../../services/cart.service';
+import { LoaderComponent } from "../loader/loader.component";
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, LoaderComponent],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
@@ -24,13 +25,15 @@ export class ProductDetailComponent implements OnInit {
   router = inject(Router)
 
   isLogin = this.auth.isLogin
+  isLoading = this.productService.isLoading
 
   ngOnInit(): void {
+    this.isLoading = true
     const productId = this.activateRoute.snapshot.paramMap.get('id')
     if (productId) {
       this.productService.getProductById(productId).then(product => {
         this.product = product
-        console.log(this.product);
+        this.isLoading = false
       }).catch(err => {
         alert('Error while fetching');
       })
