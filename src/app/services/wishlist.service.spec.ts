@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GsapService } from './gsap.service';
+import { WishlistService } from './wishlist.service';
 
-describe('GsapService', () => {
-  let service: GsapService;
+describe('WishlistService', () => {
+  let service: WishlistService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GsapService);
+    service = TestBed.inject(WishlistService);
   });
 
   it('should be created', () => {

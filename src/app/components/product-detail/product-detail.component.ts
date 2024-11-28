@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { ICart, IProducts } from '../../model/user';
 import { CartService } from '../../services/cart.service';
 import { LoaderComponent } from "../loader/loader.component";
+import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -17,11 +18,12 @@ import { LoaderComponent } from "../loader/loader.component";
 export class ProductDetailComponent implements OnInit {
 
   product: any
-  
+
   auth = inject(AuthService)
   activateRoute = inject(ActivatedRoute)
   productService = inject(ProductsService)
   cartService = inject(CartService)
+  wishlistService = inject(WishlistService)
   router = inject(Router)
 
   isLogin = this.auth.isLogin
@@ -40,8 +42,8 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
-  goToCart(){
-    if(this.isLogin()){
+  goToCart() {
+    if (this.isLogin()) {
       this.router.navigate(['/my-cart'])
     } else {
       alert("Your not logged in yet")
@@ -49,16 +51,29 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
-  addToCart(cartItems: any){
+  addToCart(cartItems: any) {
     if (this.isLogin()) {
       const currentUser = this.cartService.getCurrentUser()
       if (currentUser) {
         const userId = currentUser.uid
         this.cartService.addToCart(userId, cartItems)
-        alert("cart added")
+        alert("item added to cart")
       }
     } else {
-      alert('your not logged in yet')
+      alert('You are not logged in yet')
+    }
+  }
+
+  addToWishlist(wishlistItems: any) {
+    if (this.isLogin()) {
+      const currentUser = this.cartService.getCurrentUser()
+      if (currentUser) {
+        const userId = currentUser.uid
+        this.wishlistService.addToWishlist(userId, wishlistItems)
+      }
+      alert('item added to wishlist')
+    } else {
+      alert('You are not logged in yet')
     }
   }
 }
