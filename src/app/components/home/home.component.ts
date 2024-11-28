@@ -1,9 +1,6 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import {gsap} from 'gsap'
-import { ScrollTrigger } from 'gsap/all';
-
-gsap.registerPlugin(ScrollTrigger)
+import { GsapService } from '../../services/gsap.service';
 
 @Component({
   selector: 'app-home',
@@ -14,31 +11,10 @@ gsap.registerPlugin(ScrollTrigger)
 })
 export class HomeComponent implements AfterViewInit {
 
-  initScrollTrigger(){
-    gsap.to('.text-anime', {
-      opacity: 0,
-      duration: 0.5,
-      scrollTrigger: {
-        trigger: '.home-section',
-        scrub: true,
-        start: '10% 50%',
-        end: '90% 80%'
-      }
-    }),
-    gsap.to('.text-fixed', {
-      opacity: 0,
-      duration: 0.5,
-      scrollTrigger: {
-        trigger: '.home-section',
-        scrub: true,
-        start: '80% 100%',
-        end: '100% 60%'
-      }
-    })
-  }
+  gsapService = inject(GsapService)
 
   ngAfterViewInit(): void {
-    this.initScrollTrigger()
+    this.gsapService.initScrollTrigger()
 }
 
 }
