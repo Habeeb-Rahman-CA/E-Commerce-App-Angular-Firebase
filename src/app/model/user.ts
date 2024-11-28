@@ -9,7 +9,7 @@ export interface IProducts {
     productId: string
     productName: string,
     productDesc: string,
-    productPrice: number | null,
+    productPrice: number,
     productCategory: string,
     productImgUrl: string,
 }

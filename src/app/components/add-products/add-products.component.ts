@@ -20,7 +20,7 @@ export class AddProductsComponent {
     productId: new Date().toString(),
     productName: '',
     productDesc: '',
-    productPrice: null,
+    productPrice: 0,
     productCategory: '',
     productImgUrl: 'https://www.shutterstock.com/image-vector/upload-document-data-file-cloud-600nw-2297720825.jpg'
   }
