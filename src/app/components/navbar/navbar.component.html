@@ -1,16 +1,16 @@
 <header>
     <nav>
-        <div class="flex justify-between p-6 items-center">
+        <div class="flex justify-between lg:p-6 p-2 items-center">
             <h1 class="font-bold text-xl lg:text-2xl">LoomCollective.</h1>
             <div class="gap-8 hidden lg:flex">
                 <a class="text-slate-600 hover:text-slate-900 transition-all duration-300 cursor-pointer">Sustainabilty</a>
                 <a class="text-slate-600 hover:text-slate-900 transition-all duration-300 cursor-pointer">Customer Service</a>
                 <a class="text-slate-600 hover:text-slate-900 transition-all duration-300 cursor-pointer">Newsletter</a>
             </div>
-            <div class="flex items-center gap-4">
+            <div class="flex items-center lg:gap-4 gap-2">
                 @if (isLogin()) {
-                    <button (click)="toggleUser()" class="border-2 py-2 px-4 rounded-full text-sm bg-slate-900 hover:bg-slate-800 text-white transition-all duration-300">{{btnHome()}}</button>
-                    <button (click)="logout()"  class="border-2 py-2 px-4 rounded-full text-sm bg-slate-900 hover:bg-slate-800 text-white transition-all duration-300">LogOut</button>
+                    <button (click)="toggleUser()" class="border-2 py-2 px-4 rounded-full lg:text-sm text-xs bg-slate-900 hover:bg-slate-800 text-white transition-all duration-300">{{btnHome()}}</button>
+                    <button (click)="logout()"  class="border-2 py-2 px-4 rounded-full lg:text-sm text-xs bg-slate-900 hover:bg-slate-800 text-white transition-all duration-300">LogOut</button>
                 } @else {
                     <button (click)="toggleRegister()" class="border-2 py-2 px-4 rounded-full text-sm bg-slate-900 hover:bg-slate-800 text-white transition-all duration-300">{{btnHome()}}</button>
                 }

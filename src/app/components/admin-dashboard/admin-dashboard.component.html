@@ -1,8 +1,8 @@
 <div class="container mx-auto">
-    <div class="flex justify-center items-center m-8">
+    <div class="flex justify-center items-center m-8 lg:mt-12 mt-60">
         <h1 class="text-xl font-semibold text-slate-500 uppercase">Dashboard</h1>
     </div>
-    <div class="mx-auto overflow-hidden rounded-t-3xl border border-blue-100 w-3/4 bg-white">
+    <div class="mx-auto overflow-hidden rounded-t-3xl border border-blue-100 lg:w-3/4 w-full bg-white">
         <div class="bg-slate-900 w-full h-20 relative">
             <div class="absolute right-4 bottom-5 font-semibold text-sm uppercase bg-slate-200 px-8 py-2 rounded-full">
                 Admin</div>
@@ -16,22 +16,22 @@
             <h3 class="font-semibold pt-2 text-xl">{{userName()}}</h3>
             <p class="font-semibold text-slate-600 text-sm">{{userEmail()}}</p>
         </div>
-        <div class="pt-4 px-8 flex gap-12">
-            <div routerLink="/add-products" class="w-1/2 flex p-4 gap-8 items-center border-2 rounded-xl cursor-pointer hover:bg-slate-100 transition-all duration-300">
+        <div class="pt-4 px-8 flex  lg:gap-12 gap-2">
+            <div routerLink="/add-products" class="lg:w-1/2 w-full flex p-4 gap-8 items-center border-2 rounded-xl cursor-pointer hover:bg-slate-100 transition-all duration-300">
                 <i class="fa-solid fa-store text-2xl"></i>
                 <h4 class="font-semibold">Catalog</h4>
             </div>
-            <div routerLink="/sales" class="w-1/2 flex p-4 gap-11 items-center border-2 rounded-xl cursor-pointer hover:bg-slate-100 transition-all duration-300">
+            <div routerLink="/sales" class="lg:w-1/2 w-full flex p-4 gap-11 items-center border-2 rounded-xl cursor-pointer hover:bg-slate-100 transition-all duration-300">
                 <i class="fa-solid fa-cart-shopping text-2xl"></i>
                 <h4 class="font-semibold">Sales</h4>
             </div>
         </div>
-        <div class="pt-4 pb-8 px-8 flex gap-12">
-            <div routerLink="/users-list" class="w-1/2 flex p-4 gap-10 items-center border-2 rounded-xl cursor-pointer hover:bg-slate-100 transition-all duration-300">
+        <div class="pt-4 pb-8 px-8 flex lg:gap-12 gap-2">
+            <div routerLink="/users-list" class="lg:w-1/2 w-full flex p-4 gap-10 items-center border-2 rounded-xl cursor-pointer hover:bg-slate-100 transition-all duration-300">
                 <i class="fa-solid fa-user text-2xl"></i>
                 <h4 class="font-semibold">Users</h4>
             </div>
-            <div class="w-1/2 flex p-4 gap-12 items-center border-2 rounded-xl cursor-pointer hover:bg-slate-100 transition-all duration-300">
+            <div class="lg:w-1/2 w-full flex p-4 gap-12 items-center border-2 rounded-xl cursor-pointer hover:bg-slate-100 transition-all duration-300">
                 <i class="fa-solid fa-gear text-2xl"></i>
                 <h4 class="font-semibold">Settings</h4>
             </div>

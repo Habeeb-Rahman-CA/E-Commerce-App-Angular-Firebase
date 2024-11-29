@@ -1,9 +1,9 @@
 <div class="container mx-auto">
     <div
         class="w-full flex flex-col items-center justify-center banner gap-4 font-sans font-bold text-white uppercase rounded-b-3xl">
-        <h4 class="text-4xl bg-none">Loom Day</h4>
-        <h2 class="text-6xl">Flat 20% off everything</h2>
-        <h4 class="text-2xl">Member exclusive</h4>
+        <h4 class="lg:text-4xl text-2xl bg-none">Loom Day</h4>
+        <h2 class="lg:text-6xl text-2xl">Flat 20% off everything</h2>
+        <h4 class="lg:text-2xl text-xl">Member exclusive</h4>
     </div>
     @if (isLoading) {
     <div class="flex justify-center items-center my-72">
@@ -11,8 +11,8 @@
     </div>
     }
 
-    <div class="filter flex justify-between pt-12 px-8 items-center text-slate-500">
-        <div class="searchBar w-80">
+    <div class="filter flex gap-2 lg:flex-row flex-col justify-between pt-12 px-8 items-center text-slate-500">
+        <div class="searchBar lg:w-80">
             <input class="w-full rounded-xl p-1 bg-slate-50" type="text" [(ngModel)]="searchQuery"
                 (input)="applyFilter()" placeholder="Search Product...">
         </div>
@@ -33,7 +33,7 @@
     @if (filteredProducts.length === 0) {
     <h2 class="text-center py-40 text-2xl font-semibold text-slate-900">No Products Found!</h2>
     }
-    <div class="grid grid-cols-4 my-5">
+    <div class="grid lg:grid-cols-4 my-5">
         @for (product of filteredProducts; track $index) {
         <div (click)="toProductDetail(product.productId)"
             class="card border-2 border-blue-100 rounded-lg overflow-hidden bg-white m-8 cursor-pointer">
